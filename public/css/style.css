@@ -2,3 +2,78 @@
     padding: 0;
     margin: 0;
 }
+
+.index-container {
+    background: linear-gradient(to bottom, #3A6073, #16222A);
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-register-card {
+    background: linear-gradient(to bottom, #b29f94, #603813);
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 30px 40px;
+}
+
+.user, .admin, .user-but1, .user-but2 {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-route, .admin-route, .ur-route, .ul-route, .al-route, #user-reg-but, #user-log-but {
+    background-color: #37474f;
+    color: white;
+    font-size: 1.3rem;
+    width: 110px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.user-route:hover, .admin-route:hover, .ur-route:hover, .ul-route:hover, .al-route:hover {
+    background-color: #263238;
+}
+
+.user-register, .user-login, .admin-login {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.ur-form, .ul-form, .al-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.register-inputs {
+    color: white !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hidden {
+    display: none;
+}
