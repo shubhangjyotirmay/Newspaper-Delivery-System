@@ -61,13 +61,6 @@ app.use("/", authRoute);
 
 app.get("/dashboard", (req, res) => {
     if (req.isAuthenticated()) {
-        let papers = ["navbharat", "times", "hello", "lets see"];
-        User.findOne({email: req.user.email}).then((user) => {
-            user.update({name: "first name check", address: "ghar mera"}).then((doc) => {
-                console.log(doc);
-                console.log(user.papers[1]);
-            })
-        })
         res.render("dashboard");
     } else {
         res.redirect("/");
@@ -78,6 +71,57 @@ app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}!`);
 })
 
-// const data = require("./data/billDues");
-// console.log(data);
-// console.log(data.length);
+//  sample data adding to database
+
+// const userNames = require("./data/names");
+// const userEmails = require("./data/emails");
+// const userPasswords = require("./data/passwords");
+// const userAddresses = require("./data/addresses");
+// const userContacts = require("./data/contact");
+// const userNewspapers = require("./data/newspapers");
+// const userMagazines = require("./data/magazines");
+// const userSub = require("./data/onlineSubscriptions");
+// const userDue = require("./data/billDues");
+
+// let hashPassList = [];
+
+// function hashPass(i) {
+//     if (i > 99) {
+//         saveToDatabase(0);
+//         return;
+//     }
+
+//     bcrypt.genSalt(10).then((salt) => {
+//         bcrypt.hash(userPasswords[i], salt).then((hashedPass) => {
+//             hashPassList.push(hashedPass);
+//             hashPass(i + 1);
+//         })
+//     })
+// }
+
+// hashPass(0);
+
+// function saveToDatabase(i) {
+//     if (i > 99) {
+//         return;
+//     }
+
+//     const currUser = new User({
+//         name: userNames[i],
+//         email: userEmails[i],
+//         password: hashPassList[i],
+//         address: userAddresses[i],
+//         contactNo: userContacts[i],
+//         newspapers: userNewspapers[i],
+//         magazines: userMagazines[i],
+//         onlineSubscription: userSub[i],
+//         billDues: userDue[i],
+//         isAdmin: false
+//     });
+//     currUser.save().then((user) => {
+//         console.log("user " + i + " " + user.name);
+//         saveToDatabase(i + 1);
+//     }).catch((err) => {
+//         console.log(err);
+//     })
+// }

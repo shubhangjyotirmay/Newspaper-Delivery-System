@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        default: "Enter Name"
     },
     email: {
         type: String,
@@ -13,10 +14,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     address: {
-        type: String
+        type: String,
+        default: "Enter Address"
     },
     contactNo: {
-        type: String
+        type: String,
+        default: "0000000000"
     },
     newspapers: {
         type: Array,
