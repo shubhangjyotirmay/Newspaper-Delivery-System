@@ -4,6 +4,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const passport=require('passport')
 const session = require("express-session");
+const bcrypt = require("bcryptjs");
 
 const User = require("./models/user");
 
@@ -60,6 +61,13 @@ app.use("/", authRoute);
 
 app.get("/dashboard", (req, res) => {
     if (req.isAuthenticated()) {
+        let papers = ["navbharat", "times", "hello", "lets see"];
+        User.findOne({email: req.user.email}).then((user) => {
+            user.update({name: "first name check", address: "ghar mera"}).then((doc) => {
+                console.log(doc);
+                console.log(user.papers[1]);
+            })
+        })
         res.render("dashboard");
     } else {
         res.redirect("/");
@@ -69,3 +77,7 @@ app.get("/dashboard", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}!`);
 })
+
+// const data = require("./data/billDues");
+// console.log(data);
+// console.log(data.length);

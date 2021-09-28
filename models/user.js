@@ -15,6 +15,25 @@ const userSchema = new mongoose.Schema({
     address: {
         type: String
     },
+    contactNo: {
+        type: String
+    },
+    newspapers: {
+        type: Array,
+        default: []
+    },
+    magazines: {
+        type: Array,
+        default: []
+    },
+    onlineSubscription: {
+        type: Boolean,
+        default: false
+    },
+    billDues: {
+        type: Boolean,
+        default: false
+    },
     isAdmin: {
         type: Boolean,
         default: false
