@@ -67,6 +67,22 @@ app.get("/dashboard", (req, res) => {
     }
 })
 
+app.get("/api/onLoadinfo", (req, res) => {
+    User.findOne({email: req.user.email}).then((user) => {
+        let userInfo = {
+            name: user.name,
+            email: user.email,
+            address: user.address,
+            contactNo: user.contactNo,
+            newspapers: user.newspapers,
+            magazines: user.magazines,
+            onlineSub: user.onlineSubscription,
+            dues: user.billDues
+        }
+        res.send(userInfo);
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}!`);
 })

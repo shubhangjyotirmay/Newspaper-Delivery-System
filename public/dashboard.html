@@ -4,9 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Newzly!</title>
 </head>
 <body>
-    dashboard
+
+    <div class="admin-dashboard-page">
+
+        <div class="admin-navbar-cont z-depth-3">
+            <div class="admin-navbar-left">
+                <div class="navbar-logo">
+                    <a class="navbar-logo-link" href="/dashboard" title="Home">
+                        <div class="navbar-logo-img">
+
+                        </div>
+    
+                        <div class="navbar-logo-title">
+                            Newzly
+                        </div>
+                    </a>
+                </div>
+
+                <div class="navbar-find-user">
+                    <a class="navbar-find-link" href="/finduser">
+                        <div class="navbar-find-text">
+                            Find User
+                        </div>
+                    </a>
+                </div>
+
+                <div class="navbar-list-user">
+                    <a class="navbar-list-link" href="/userlist">
+                        <div class="navbar-list-text">
+                            User List
+                        </div>
+                    </a>
+                </div>
+
+                <div class="navbar-list-admin">
+                    <a class="navbar-admin-link" href="/adminlist">
+                        <div class="navbar-admin-text">
+                            Admin List
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="navbar-tree">
+                    <a class="navbar-tree-link" href="/visualization">
+                        <div class="navbar-tree-text">
+                            Visualization
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="admin-navbar-right">
+                <div class="navbar-profile">
+                    <a class="navbar-profile-link" href="/profile" title="My Profile">
+                        <div class="navbar-profile-img">
+                            
+                        </div>
+                    </a>
+                </div>
+
+                <form action="/logout" method="get" class="navbar-logout">
+                    <button class="waves-effect waves-light btn user-logout-but">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="admin-dashboard-body">
+            <div class="admin-dashboard-info">
+                <div class="admin-dashboard-name">
+                    
+                </div>
+                <div class="admin-dashboard-text">
+                    Welcome to the Admin Section
+                </div>
+            </div>
+
+            <div class="admin-dashboard-photo">
+
+            </div>
+
+        </div>
+
+
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/adminDashboard.js"></script>
 </body>
 </html>
