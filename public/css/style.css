@@ -283,6 +283,8 @@
     height: 120px;
     background-color: #00695c;
     cursor: pointer;
+    border: 2px solid black;
+    border-radius: 15px;
 }
 
 .user-list-display-card:hover, .admin-list-display-card:hover {

@@ -37,7 +37,7 @@ function fillUsers(data) {
         } else {
             imgName += userName[0].charAt(1).toUpperCase();
         }
-        let newCard = `<div class="user-list-display-card">
+        let newCard = `<div class="user-list-display-card z-depth-4">
                             <div class="user-card-content">
                                 <div class="user-card-left">
                                     <div class="user-card-name">

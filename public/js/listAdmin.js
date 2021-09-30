@@ -37,7 +37,7 @@ function fillAdmins(data) {
         } else {
             imgName += adminName[0].charAt(1).toUpperCase();
         }
-        let newCard = `<div class="admin-list-display-card">
+        let newCard = `<div class="admin-list-display-card z-depth-4">
                             <div class="admin-card-content">
                                 <div class="admin-card-left">
                                     <div class="admin-card-name">
