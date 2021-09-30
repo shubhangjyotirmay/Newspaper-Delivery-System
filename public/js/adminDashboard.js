@@ -3,9 +3,11 @@ function fillFieldsOnLoad(localStoredData) {
     let userName = localStoredData.name;
     let names = userName.split(' ');
     let profImgText = document.querySelector('.navbar-profile-img');
-    profImgText.innerHTML = names[0].charAt(0);
+    profImgText.innerHTML = names[0].charAt(0).toUpperCase();
     if (names.length > 1) {
-        profImgText.innerHTML += names[1].charAt(0);
+        profImgText.innerHTML += names[1].charAt(0).toUpperCase();
+    } else {
+        profImgText.innerHTML += names[0].charAt(1).toUpperCase();
     }
 }
 

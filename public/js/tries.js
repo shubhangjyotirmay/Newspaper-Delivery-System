@@ -6,16 +6,18 @@ function fillFindPage() {
     let userName = JSON.parse(localStorage.getItem('userNewzly')).name;
     let names = userName.split(' ');
     let profImgText = document.querySelector('.navbar-profile-img');
-    profImgText.innerHTML = names[0].charAt(0);
+    profImgText.innerHTML = names[0].charAt(0).toUpperCase();
     if (names.length > 1) {
-        profImgText.innerHTML += names[1].charAt(0);
+        profImgText.innerHTML += names[1].charAt(0).toUpperCase();
+    } else {
+        profImgText.innerHTML += names[0].charAt(1).toUpperCase();
     }
 }
 
 fillFindPage();
 
 function fetchUserList() {
-    fetch('/api/userList').then((res) => {
+    fetch('/api/findOnlyUsers').then((res) => {
         return res.json();
     }).then((data) => {
         console.log(data);

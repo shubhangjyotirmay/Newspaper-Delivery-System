@@ -75,6 +75,22 @@ app.get("/finduser", (req, res) => {
     }
 })
 
+app.get("/userlist", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("userlist");
+    } else {
+        res.redirect("/");
+    }
+})
+
+app.get("/adminlist", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("adminlist");
+    } else {
+        res.redirect("/");
+    }
+})
+
 app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
@@ -83,6 +99,7 @@ app.get("/logout", (req, res) => {
 app.get("/api/onLoadinfo", (req, res) => {
     User.findOne({email: req.user.email}).then((user) => {
         let userInfo = {
+            id: user._id,
             name: user.name,
             email: user.email,
             address: user.address,
@@ -96,11 +113,12 @@ app.get("/api/onLoadinfo", (req, res) => {
     })
 })
 
-app.get("/api/userList", (req, res) => {
+app.get("/api/findOnlyUsers", (req, res) => {
     User.find({isAdmin: false}).then((users) => {
         let sendList = [];
         for (let i = 0; i < users.length; i++) {
             const obj = {
+                id: users[i]._id,
                 name: users[i].name,
                 email: users[i].email,
                 address: users[i].address,
@@ -109,6 +127,23 @@ app.get("/api/userList", (req, res) => {
                 magazines: users[i].magazines,
                 onlineSub: users[i].onlineSubscription,
                 dues: users[i].billDues
+            }
+            sendList.push(obj);
+        }
+        res.send(sendList);
+    })
+})
+
+app.get("/api/findOnlyAdmins", (req, res) => {
+    User.find({isAdmin: true}).then((users) => {
+        let sendList = [];
+        for (let i = 0; i < users.length; i++) {
+            const obj = {
+                id: users[i]._id,
+                name: users[i].name,
+                email: users[i].email,
+                address: users[i].address,
+                contactNo: users[i].contactNo
             }
             sendList.push(obj);
         }
