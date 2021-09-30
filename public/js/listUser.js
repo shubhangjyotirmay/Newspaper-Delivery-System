@@ -62,3 +62,7 @@ function fillUsers(data) {
         }
     }
 }
+
+document.querySelector('.user-logout-but').addEventListener('click', function() {
+    localStorage.removeItem('userNewzly');
+});
