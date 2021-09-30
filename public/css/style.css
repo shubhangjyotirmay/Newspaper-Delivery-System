@@ -62,7 +62,7 @@
     color: white !important;
 }
 
-.admin-dashboard-page {
+.admin-dashboard-page, .find-user-page {
     min-height: 100vh;
     max-height: 100vh;
     min-width: 100vw;
@@ -171,6 +171,79 @@
     font-size: 2rem;
     font-weight: 400;
 }
+
+.find-user-body {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    padding: 100px 80px 0 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.find-search-bar {
+    height: 40px;
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    align-items: center;
+    padding: 2px 5px;
+}
+
+.search-text-box {
+    height: 40px !important;
+    width: 355px !important;
+    border: none !important;
+    margin: 0 !important;
+    font-size: 1.3rem !important;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    border-right: 1px solid grey;
+}
+
+.search-text-box:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.search-suggestion {
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 200px;
+    gap: 5px;
+}
+
+.suggestion-item {
+    display: flex;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 0 5px;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(51, 46, 46);
+}
+
+.suggestion-item:hover {
+    background-color: rgb(51, 46, 46);
+    color: white;
+}
+
+
 
 
 

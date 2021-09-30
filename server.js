@@ -67,6 +67,19 @@ app.get("/dashboard", (req, res) => {
     }
 })
 
+app.get("/finduser", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("finduser");
+    } else {
+        res.redirect("/");
+    }
+})
+
+app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+})
+
 app.get("/api/onLoadinfo", (req, res) => {
     User.findOne({email: req.user.email}).then((user) => {
         let userInfo = {
@@ -80,6 +93,26 @@ app.get("/api/onLoadinfo", (req, res) => {
             dues: user.billDues
         }
         res.send(userInfo);
+    })
+})
+
+app.get("/api/userList", (req, res) => {
+    User.find({isAdmin: false}).then((users) => {
+        let sendList = [];
+        for (let i = 0; i < users.length; i++) {
+            const obj = {
+                name: users[i].name,
+                email: users[i].email,
+                address: users[i].address,
+                contactNo: users[i].contactNo,
+                newspapers: users[i].newspapers,
+                magazines: users[i].magazines,
+                onlineSub: users[i].onlineSubscription,
+                dues: users[i].billDues
+            }
+            sendList.push(obj);
+        }
+        res.send(sendList);
     })
 })
 

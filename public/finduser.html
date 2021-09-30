@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <title>Newzly!</title>
 </head>
 <body>
 
-    <div class="admin-dashboard-page">
+    <div class="find-user-page">
 
         <div class="admin-navbar-cont z-depth-3">
             <div class="admin-navbar-left">
@@ -74,25 +75,25 @@
             </div>
         </div>
 
-        <div class="admin-dashboard-body">
-            <div class="admin-dashboard-info">
-                <div class="admin-dashboard-name">
+        <div class="find-user-body">
+            <div class="find-search-bar">
+                <div class="search-bar">
+                    <div class="search-icon">
+                        <i class="material-icons">search</i>
+                    </div>
+                    <input class="search-text-box" type="text" placeholder="Fetching Users..." disabled>
+                </div>
+                <div class="search-suggestion hidden">
                     
                 </div>
-                <div class="admin-dashboard-text">
-                    Welcome to the Admin Section
-                </div>
             </div>
 
-            <div class="admin-dashboard-photo">
-
-            </div>
         </div>
 
-
     </div>
-    
+
+    <script src="https://kit.fontawesome.com/11f98b133b.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./js/adminDashboard.js"></script>
+    <script src="./js/tries.js"></script>
 </body>
 </html>
