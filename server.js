@@ -96,6 +96,14 @@ app.get("/adminlist", (req, res) => {
     }
 })
 
+app.get("/visualization", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("visualization");
+    } else {
+        res.redirect("/");
+    }
+})
+
 app.get("/logout", (req, res) => {
     req.logout();
     req.session = null;  
