@@ -39,6 +39,7 @@ app.use(session({
         mongoUrl: process.env.mongoURL,
         auto_reconnect: true
     }),
+    unset: 'destroy' 
 }));
 
 app.use(passport.initialize())
@@ -97,6 +98,7 @@ app.get("/adminlist", (req, res) => {
 
 app.get("/logout", (req, res) => {
     req.logout();
+    req.session = null;  
     res.redirect("/");
 })
 

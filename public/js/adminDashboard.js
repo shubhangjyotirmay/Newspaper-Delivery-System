@@ -12,21 +12,15 @@ function fillFieldsOnLoad(localStoredData) {
 }
 
 function getOnLoad() {
-    let localStoredData = JSON.parse(localStorage.getItem('userNewzly'));
-    if (localStoredData == null) {
-        fetch('/api/onloadinfo').then((res) => {
-            return res.json();
-        }).then((data) => {
-            localStoredData = data;
-            localStorage.setItem('userNewzly', JSON.stringify(localStoredData));
-            fillFieldsOnLoad(localStoredData);
-        })
-    } else {
-        fillFieldsOnLoad(localStoredData);
-    }
+    fetch('/api/onloadinfo').then((res) => {
+        return res.json();
+    }).then((data) => {
+        localStorage.setItem('userNewzly', JSON.stringify(data));
+        fillFieldsOnLoad(data);
+    })
 }
 
-getOnLoad();
+window.onload = getOnLoad();
 
 document.querySelector('.user-logout-but').addEventListener('click', function() {
     localStorage.removeItem('userNewzly');
