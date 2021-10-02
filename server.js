@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const passport=require('passport')
+const MongoStore = require("connect-mongo");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
 
@@ -29,13 +30,16 @@ mongoose.connection.on("error", () => {
 
 app.use(session({
     secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     cookie : {
-        maxAge: 1000 * 60 * 60 * 24 * 365
+        maxAge: 1000* 60 * 60 *24 * 365
     },
-    })
-);
+    store: MongoStore.create({
+        mongoUrl: process.env.mongoURL,
+        auto_reconnect: true
+    }),
+}));
 
 app.use(passport.initialize())
 app.use(passport.session())
