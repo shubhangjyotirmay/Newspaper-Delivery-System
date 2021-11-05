@@ -362,7 +362,158 @@
 }
 
 
+.search-bar-but {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
 
+.searchbar-but {
+    background-color: #37474f;
+    color: white;
+    font-size: 1.2rem;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+.find-result {
+    display: flex;
+    margin: 50px 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 80px;
+}
+
+.find-left {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.find-right {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.find-photo-card {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.find-pic {
+    display: flex;
+    background-color: #004d40;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
+}
+
+.find-pic-name {
+    font-size: 2.5rem;
+}
+
+.find-due-online-card {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    font-size: 1.5rem;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.find-due, .find-online, .find-info-id, .find-info-name, .find-info-email, .find-info-contact, .find-info-address {
+    display: flex;
+    flex-direction: row;
+}
+
+.find-due {
+    border-bottom: 1px solid #6c757d;
+    padding-bottom: 10px;
+}
+
+.due-online-left {
+    display: flex;
+    width: 60%;
+}
+
+.due-online-right {
+    display: flex;
+    width: 40%;
+    color: #6c757d;
+}
+
+.find-info-card {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 20px 40px;
+    gap: 10px;
+    font-size: 1.2rem;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.find-info-left {
+    display: flex;
+    width: 30%;
+}
+
+.find-info-right {
+    display: flex;
+    width: 70%;
+    color: #6c757d;
+}
+
+.find-info-id, .find-info-name, .find-info-email, .find-info-contact {
+    border-bottom: 1px solid #6c757d;
+    padding-bottom: 10px;
+}
+
+.find-mag-news {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.find-news, .find-mags {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    padding: 20px;
+}
+
+.find-news-head, .find-mags-head {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.find-news-list, .find-mags-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.2rem;
+    color: #6c757d;
+}
 
 
 

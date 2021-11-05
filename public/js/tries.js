@@ -1,5 +1,7 @@
 const searchInputBar = document.querySelector('.search-text-box');
 const searchSuggestion = document.querySelector('.search-suggestion');
+let searchBarBut = document.querySelector('.search-bar-but');
+let barBut = document.querySelector('.searchbar-but');
 let userFindList = [];
 
 function fillFindPage() {
@@ -25,6 +27,7 @@ function fetchUserList() {
             userFindList.push(data[i].name);
         }
         buildTrie();
+        getFreq(data);
         searchInputBar.placeholder = "Enter Name";
         searchInputBar.disabled = false;
     })
@@ -34,6 +37,7 @@ fetchUserList();
 
 function displaySuggestions() {
     searchSuggestion.classList.remove('hidden');
+    searchBarBut.style.marginTop = '220px';
 }
 searchInputBar.addEventListener('keydown', displaySuggestions);
 searchInputBar.addEventListener('keyup', displaySuggestions);
@@ -46,6 +50,7 @@ window.addEventListener('click', function (e) {
         } else {
             searchSuggestion.classList.add('hidden');
         }
+        searchBarBut.style.marginTop = '10px';
     }
 })
 
@@ -99,6 +104,11 @@ function giveSuggestions(e) {
     for (let i = 0; i < predictions.length; i++) {
         searchSuggestion.innerHTML += `<div class="suggestion-item" onClick="placeItemInBar(this)"><b>${str}</b>${predictions[i].substring(str.length)}</div>`
     }
+    if (str === '') {
+        barBut.setAttribute('disabled', 'disabled');
+    } else {
+        barBut.removeAttribute('disabled');
+    }
 }
 
 function placeItemInBar(e) {
@@ -108,6 +118,11 @@ function placeItemInBar(e) {
 searchInputBar.addEventListener('keyup', giveSuggestions);
 searchInputBar.addEventListener('keydown', giveSuggestions);
 searchInputBar.addEventListener('click', giveSuggestions);
+
+barBut.addEventListener('click', function() {
+    let val = searchInputBar.value;
+    console.log({val});
+})
 
 document.querySelector('.user-logout-but').addEventListener('click', function() {
     localStorage.removeItem('userNewzly');
