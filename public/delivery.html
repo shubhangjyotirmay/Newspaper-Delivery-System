@@ -9,7 +9,7 @@
     <title>Newzly!</title>
 </head>
 <body>
-    <div class="visualization-page">
+    <div class="delivery-page">
 
         <div class="admin-navbar-cont z-depth-3">
             <div class="admin-navbar-left">
@@ -81,72 +81,31 @@
             </div>
         </div>
 
-        <div class="visualization-body">
-            <div class="visualization-header">
-                Building B+ Trees...
-            </div>
-
-            <div class="Btree-name-canvas">
-                <div class="Btree-name-text">
-                    Building B+ Tree for User Name Entries...
+        <div class="delivery-body">
+            <div class="city-map">
+                <div class="city-head">
+                    City Map
                 </div>
-    
-                <div class="Btree-name-vis">
-                    <canvas id="names-canvas">
-    
-                    </canvas>
-                </div>
-            </div>
-
-            <div class="Btree-id-canvas">
-                <div class="Btree-id-text">
-                    Building B+ Tree for User ID Entries...
-                </div>
-    
-                <div class="Btree-id-vis">
-                    <canvas id="id-canvas">
-    
-                    </canvas>
-                </div>
-            </div>
-
-            <div class="check-name hidden">
-                <div class="name-head">
-                    Check for a name
-                </div>
-
-                <div class="name-search">
-                    <input type="text" class="name-input">
-                    <button class="waves-effect waves-light btn name-search-but" disabled>Check</button>
-                </div>
-
-                <div class="name-check-res">
-
-                </div>
-            </div>
-
-            <div class="check-id hidden"> 
-                <div class="id-head">
-                    Check for an ID
-                </div>
-
-                <div class="id-search">
-                    <input type="text" class="id-input">
-                    <button class="waves-effect waves-light btn id-search-but" disabled>Check</button>
-                </div>
-
-                <div class="id-check-res">
-                    
+                <div class="city-graph">
+                    <div class="city-left">
+                        <img class="graph1" src="../resources/graph 1.png" alt="">
+                        <img class="graph2" src="../resources/graph 2.png" alt="">
+                        <img class="graph3" src="../resources/graph 3.png" alt="">
+                        <img class="graph4" src="../resources/graph 4.png" alt="">
+                    </div>
+                    <div class="city-right">
+                        <img class="graph5" src="../resources/graph 5.png" alt="">
+                        <img class="graph6" src="../resources/graph 6.png" alt="">
+                        <img class="graph7" src="../resources/graph 7.png" alt="">
+                    </div>
                 </div>
             </div>
 
         </div>
-
+        
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./js/visualization.js"></script>
-    <script src="./js/btree.js"></script>
-    <script src="./js/btreevis.js"></script>
+    <script src="./js/delivery.js"></script>
 </body>
 </html>

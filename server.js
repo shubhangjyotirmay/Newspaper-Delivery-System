@@ -104,6 +104,14 @@ app.get("/visualization", (req, res) => {
     }
 })
 
+app.get("/delivery", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("delivery");
+    } else {
+        res.redirect("/");
+    }
+})
+
 app.get("/logout", (req, res) => {
     req.logout();
     req.session = null;  
