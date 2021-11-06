@@ -61,7 +61,71 @@ function buildBTree() {
 	document.querySelector('.Btree-name-text').innerHTML = 'B+ Tree for User Names';
 	document.querySelector('.Btree-id-text').innerHTML = 'B+ Tree for User IDs';
 	document.querySelector('.visualization-body').style.marginBottom = '50px';
+	document.querySelector('.check-name').classList.remove('hidden');
+	document.querySelector('.check-id').classList.remove('hidden');
 }
+
+function trackNameInp() {
+	let val = document.querySelector('.name-input').value;
+	if (val !== '') {
+		document.querySelector('.name-search-but').removeAttribute('disabled');
+	} else {
+		document.querySelector('.name-search-but').setAttribute('disabled', 'disabled');
+	}
+}
+
+function checkName() {
+	document.querySelector('.name-check-res').innerHTML = '';
+	let val = document.querySelector('.name-input').value;
+	let x = nameBtree.search(val);
+	if (x === true) {
+		let div1 = document.createElement('div');
+		div1.innerHTML = `User with the name ${val} exists in the database`
+		document.querySelector('.name-check-res').appendChild(div1);
+		let div2 = document.createElement('div');
+		div2.innerHTML = 'For details of the user navigate to Find User page';
+		document.querySelector('.name-check-res').appendChild(div2);
+	} else {
+		let div = document.createElement('div');
+		div.innerHTML = `User with the name ${val} does not exist in the database`
+		document.querySelector('.name-check-res').appendChild(div);
+	}
+}
+
+function trackIdInp() {
+	let val = document.querySelector('.id-input').value;
+	if (val !== '') {
+		document.querySelector('.id-search-but').removeAttribute('disabled');
+	} else {
+		document.querySelector('.id-search-but').setAttribute('disabled', 'disabled');
+	}
+}
+
+function checkId() {
+	document.querySelector('.id-check-res').innerHTML = '';
+	let val = document.querySelector('.id-input').value;
+	let x = idBtree.search(val);
+	if (x === true) {
+		let div1 = document.createElement('div');
+		div1.innerHTML = `User with the ID ${val} exists in the database`
+		document.querySelector('.id-check-res').appendChild(div1);
+		let div2 = document.createElement('div');
+		div2.innerHTML = 'For details of the user navigate to Find User page';
+		document.querySelector('.id-check-res').appendChild(div2);
+	} else {
+		let div = document.createElement('div');
+		div.innerHTML = `User with the ID ${val} does not exist in the database`
+		document.querySelector('.id-check-res').appendChild(div);
+	}
+}
+
+document.querySelector('.name-input').addEventListener('keyup', trackNameInp);
+document.querySelector('.name-input').addEventListener('keydown', trackNameInp);
+document.querySelector('.name-search-but').addEventListener('click', checkName);
+
+document.querySelector('.id-input').addEventListener('keyup', trackIdInp);
+document.querySelector('.id-input').addEventListener('keydown', trackIdInp);
+document.querySelector('.id-search-but').addEventListener('click', checkId);
 
 document.querySelector('.user-logout-but').addEventListener('click', function() {
     localStorage.removeItem('userNewzly');
