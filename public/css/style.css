@@ -515,6 +515,17 @@
     color: #6c757d;
 }
 
+.check-name, .check-id {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.name-head, .id-head {
+    font-size: 1.5rem;
+}
+
 
 
 

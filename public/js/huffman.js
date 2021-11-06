@@ -116,6 +116,7 @@ function displaySearchResult(searchRes) {
     fillLeftTop(searchRes);
     fillLeftBot(searchRes);
     fillRightTop(searchRes);
+    fillRightBot(searchRes);
 
     document.querySelector('.find-result').classList.remove('hidden');
 }
@@ -159,8 +160,23 @@ function fillRightTop(searchRes) {
     document.querySelector('.find-info-address').children[1].innerHTML = searchRes.address;
 }
 
-function fillRightBotLeft(searchRes) {
-
+function fillRightBot(searchRes) {
+    let newsList = searchRes.newspapers;
+    let magsList = searchRes.magazines;
+    let newsDiv = document.querySelector('.find-news-list');
+    let magsDiv = document.querySelector('.find-mags-list');
+    newsDiv.innerHTML = '';
+    magsDiv.innerHTML = '';
+    for (let i = 0; i < newsList.length; i++) {
+        let div = document.createElement('div');
+        div.innerHTML = newsList[i];
+        newsDiv.appendChild(div);
+    }
+    for (let i = 0; i < magsList.length; i++) {
+        let div = document.createElement('div');
+        div.innerHTML = magsList[i];
+        magsDiv.appendChild(div);
+    }
 }
 
 document.querySelector('.searchbar-but').addEventListener('click', decodeData);
