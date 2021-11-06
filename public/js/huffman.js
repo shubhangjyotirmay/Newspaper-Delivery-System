@@ -1,37 +1,44 @@
-const nameMap = new Map();
-const idMap = new Map();
-const freqMap = new Map();
+let nameMap = new Map();
+let freqMap = new Map();
 let codeMap = new Map();
+let pq = [];
+let root = null;
+let dataJSON;
+let dataString;
 
 class HuffmanNode {
     constructor() {
-        this.data = 0;
-        this.c = '';
+        this.freq = 0;
+        this.char = '';
         this.left = this.right = null;
     }
 }
 
 function getFreq(data) {
-    let str = JSON.stringify(data);
-    for (let i = 0; i < str.length; i++) {
-        if (freqMap.has(str[i]) === true) {
-            freqMap.set(str[i], freqMap.get(str[i]) + 1);
+    dataJSON = data;
+    dataString = JSON.stringify(data);
+    for (let i = 0; i < dataString.length; i++) {
+        if (freqMap.has(dataString[i]) === true) {
+            freqMap.set(dataString[i], freqMap.get(dataString[i]) + 1);
         } else {
-            freqMap.set(str[i], 1);
+            freqMap.set(dataString[i], 1);
         }
     }
-    console.log({freqMap});
+    //console.log({freqMap});
 
-    let pq = [];
+    buildHuffmanTree();
+    //console.log({nameMap});
+}
+
+function buildHuffmanTree() {
     for (const [key, value] of freqMap) {
         let hm = new HuffmanNode();
-        hm.c = key;
-        hm.data = value;
+        hm.char= key;
+        hm.freq = value;
         hm.left = hm.right = null;
         pq.push(hm);
     }
 
-    let root = null;
     pq.sort(function(a, b) {
         return a.data - b.data;
     });
@@ -44,8 +51,8 @@ function getFreq(data) {
         pq.shift();
 
         let f = new HuffmanNode();
-        f.data = x.data + y.data;
-        f.c = '$';
+        f.freq = x.freq + y.freq;
+        f.char = '$';
         f.left = x;
         f.right = y;
         root = f;
@@ -57,14 +64,103 @@ function getFreq(data) {
     }
 
     getCodes(root, '');
-    console.log({codeMap});
+    //console.log({codeMap});
+
+    encodeData();
 }
 
 function getCodes(root, s) {
     if (root.left == null && root.right == null) {
-        codeMap.set(root.c, s);
+        codeMap.set(root.char, s);
         return;
     }
     getCodes(root.left, s + '0');
     getCodes(root.right, s + '1');
 }
+
+function encodeData() {
+    for (let i = 0; i < dataJSON.length; i++) {
+        let encodedString = '';
+        let str = JSON.stringify(dataJSON[i]);
+        for (let j = 0; j < str.length; j++) {
+            encodedString += codeMap.get(str[j]);
+        }
+        nameMap.set(dataJSON[i].name, encodedString);
+    }
+}
+
+function decodeData() {
+    let searchName = document.querySelector('.search-text-box').value;
+    let str = nameMap.get(searchName);
+    let n = str.length;
+    let i = 0;
+    let decStr = '';
+    while (i < n) {
+        let tempRoot = root;
+        while (i < n && (tempRoot.left != null || tempRoot.right != null)) {
+            if (str[i] === '0') {
+                tempRoot = tempRoot.left;
+            } else {
+                tempRoot = tempRoot.right;
+            }
+            i++;
+        }
+        decStr += tempRoot.char;
+    }
+
+    let x = JSON.parse(decStr);
+    displaySearchResult(x);
+}
+
+function displaySearchResult(searchRes) {
+    fillLeftTop(searchRes);
+    fillLeftBot(searchRes);
+    fillRightTop(searchRes);
+
+    document.querySelector('.find-result').classList.remove('hidden');
+}
+
+function fillLeftTop(searchRes) {
+    let profPicName = '';
+    let resNames = searchRes.name.split(' ');
+    profPicName = resNames[0].charAt(0).toUpperCase();
+    if (resNames.length > 1) {
+        profPicName += resNames[1].charAt(0).toUpperCase();
+    } else {
+        profPicName += resNames[0].charAt(1).toUpperCase();
+    }
+    document.querySelector('.find-pic').innerHTML = profPicName;
+    document.querySelector('.find-pic-name').innerHTML = searchRes.name;
+}
+
+function fillLeftBot(searchRes) {
+    let resDues;
+    if (searchRes.dues === true) {
+        resDues = 'Yes';
+    } else {
+        resDues = 'None';
+    }
+    document.querySelector('.find-due').children[1].innerHTML = resDues;
+
+    let resSub;
+    if (searchRes.onlineSub === true) {
+        resSub = 'Yes';
+    } else {
+        resSub = 'None';
+    }
+    document.querySelector('.find-online').children[1].innerHTML = resSub;
+}
+
+function fillRightTop(searchRes) {
+    document.querySelector('.find-info-id').children[1].innerHTML = searchRes.id;
+    document.querySelector('.find-info-name').children[1].innerHTML = searchRes.name;
+    document.querySelector('.find-info-email').children[1].innerHTML = searchRes.email;
+    document.querySelector('.find-info-contact').children[1].innerHTML = searchRes.contactNo;
+    document.querySelector('.find-info-address').children[1].innerHTML = searchRes.address;
+}
+
+function fillRightBotLeft(searchRes) {
+
+}
+
+document.querySelector('.searchbar-but').addEventListener('click', decodeData);

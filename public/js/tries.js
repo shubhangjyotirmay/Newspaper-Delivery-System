@@ -119,11 +119,6 @@ searchInputBar.addEventListener('keyup', giveSuggestions);
 searchInputBar.addEventListener('keydown', giveSuggestions);
 searchInputBar.addEventListener('click', giveSuggestions);
 
-barBut.addEventListener('click', function() {
-    let val = searchInputBar.value;
-    console.log({val});
-})
-
 document.querySelector('.user-logout-but').addEventListener('click', function() {
     localStorage.removeItem('userNewzly');
 });
