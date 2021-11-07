@@ -1,4 +1,5 @@
 let noOfComp = new Set();
+let INF = 1000000;
 
 class subset {
     constructor() {
@@ -54,4 +55,76 @@ countComponents();
 function totComp() {
     let totalComp = noOfComp.size;
     document.querySelector('.total-comp').innerHTML = `Total Number of Different Areas are ${totalComp}`;
+}
+
+function floydWarshall(distArray) {
+    for (let k = 0; k < 100; k++) {
+        for (let i = 0; i < 100; i++) {
+            for (let j = 0; j < 100; j++) {
+                if (distArray[i][k] + distArray[k][j] < distArray[i][j]) {
+                    distArray[i][j] = distArray[i][k] + distArray[k][j];
+                }
+            }
+        }
+    }
+
+    console.log({distArray});
+    displayDist(distArray);
+}
+
+function makeArray() {
+    let distArray = new Array(100);
+    for (let i = 0; i < 100; i++) {
+        distArray[i] = new Array(100);
+        for (let j = 0; j < 100; j++) {
+            distArray[i][j] = INF;
+        }
+    }
+
+    for (let i = 0; i < 100; i++) {
+        for (let j = 0; j < 100; j++) {
+            if (distArray[i][j] != 1000000) {
+                continue;
+            }
+            if (i == j) {
+                distArray[i][j] = 0;
+                continue;
+            }
+            for (let k = 0; k < edges.length; k++) {
+                if ((edges[k][0] === i && edges[k][1] === j) || (edges[k][0] === j && edges[k][1] === i)) {
+                    distArray[i][j] = edges[k][2];
+                    distArray[j][i] = edges[k][2];
+                }
+            }
+        }
+    }
+
+    //console.log({distArray});
+    floydWarshall(distArray)
+}
+
+makeArray();
+
+function displayDist(distArray) {
+    let nameSet = new Set();
+    let mainDiv = document.querySelector('.city-distances');
+    for (let i = 0; i < 100; i++) {
+        for (let j = 0; j < 100; j++) {
+            if (distArray[i][j] === INF || distArray[i][j] === 0) {
+                continue;
+            }
+            let source = namesNum[i];
+            let dest = namesNum[j];
+            let str1 = source + dest;
+            let str2 = dest + source;
+            if (nameSet.has(str1) === true || nameSet.has(str2) === true) {
+                continue;
+            }
+            nameSet.add(str1);
+            nameSet.add(str2);
+            let div = document.createElement('div');
+            div.innerHTML = `${source} -> ${dest} : ${distArray[i][j]}`;
+            mainDiv.appendChild(div);
+        }
+    }
 }
