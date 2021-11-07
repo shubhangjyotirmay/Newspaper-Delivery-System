@@ -239,3 +239,14 @@ let edges = [
     [76, 79, 213],
     [79, 22, 220]
 ]
+
+function loadCityPlan() {
+    document.querySelector('.delivery-before-load').classList.add('hidden');
+    document.querySelector('.city-map').classList.remove('hidden');
+    document.querySelector('.city-components').classList.remove('hidden');
+    document.querySelector('.city-distances').classList.remove('hidden');
+}
+
+setTimeout(() => {
+    loadCityPlan();
+}, 5000);
