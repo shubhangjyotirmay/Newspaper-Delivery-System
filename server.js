@@ -112,6 +112,14 @@ app.get("/delivery", (req, res) => {
     }
 })
 
+app.get("/profile", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("profile");
+    } else {
+        res.redirect("/");
+    }
+})
+
 app.get("/logout", (req, res) => {
     req.logout();
     req.session = null;  
