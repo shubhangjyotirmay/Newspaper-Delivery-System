@@ -68,7 +68,7 @@ function floydWarshall(distArray) {
         }
     }
 
-    console.log({distArray});
+    //console.log({distArray});
     displayDist(distArray);
 }
 
@@ -106,25 +106,46 @@ function makeArray() {
 makeArray();
 
 function displayDist(distArray) {
-    let nameSet = new Set();
-    let mainDiv = document.querySelector('.city-distances');
+    let pairSet = new Set();
+    let tableSwitch = 0;
+    let table1 = document.querySelector('.table-body1');
+    let table2 = document.querySelector('.table-body2');
+
     for (let i = 0; i < 100; i++) {
         for (let j = 0; j < 100; j++) {
             if (distArray[i][j] === INF || distArray[i][j] === 0) {
                 continue;
             }
-            let source = namesNum[i];
-            let dest = namesNum[j];
-            let str1 = source + dest;
-            let str2 = dest + source;
-            if (nameSet.has(str1) === true || nameSet.has(str2) === true) {
+            let point1 = namesNum[i];
+            let point2 = namesNum[j];
+            let str1 = point1 + point2;
+            let str2 = point2 + point1;
+            if (pairSet.has(str1) === true || pairSet.has(str2) === true) {
                 continue;
             }
-            nameSet.add(str1);
-            nameSet.add(str2);
-            let div = document.createElement('div');
-            div.innerHTML = `${source} -> ${dest} : ${distArray[i][j]}`;
-            mainDiv.appendChild(div);
+            pairSet.add(str1);
+            pairSet.add(str2);
+
+            let row = document.createElement('tr');
+            let cell1 = document.createElement('td');
+            let cell2 = document.createElement('td');
+            let cell3 = document.createElement('td');
+            cell1.innerHTML = `${point1}`;
+            cell2.innerHTML = `${point2}`;
+            cell3.innerHTML = `${distArray[i][j]}`;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            row.appendChild(cell3);
+
+            if (tableSwitch === 0) {
+                table1.appendChild(row);
+                tableSwitch = 1;
+            } else {
+                table2.appendChild(row);
+                tableSwitch = 0;
+            }
         }
     }
+
+    console.log({pairSet});
 }
