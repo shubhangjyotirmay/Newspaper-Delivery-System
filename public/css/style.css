@@ -605,6 +605,54 @@
     width: 400px;
 }
 
+.city-components {
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.component-head, .total-comp {
+    font-size: 2rem;
+}
+
+.component-list {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 20px 40px;
+    gap: 10px;
+    font-size: 1.2rem;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.component-detail {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #6c757d;
+    padding-bottom: 10px;
+}
+
+.component-detail-last {
+    display: flex;
+    flex-direction: row;
+}
+
+.component-detail-left {
+    display: flex;
+    width: 15%;
+}
+
+.component-detail-right {
+    display: flex;
+    width: 85%;
+    color: #6c757d;
+}
+
 
 
 
