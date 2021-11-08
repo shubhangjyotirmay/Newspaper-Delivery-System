@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .index-container {
     background: linear-gradient(to bottom, #3A6073, #16222A);
     min-height: 100vh;
@@ -62,9 +66,8 @@
     color: white !important;
 }
 
-.admin-dashboard-page, .find-user-page, .user-list-page, .admin-list-page, .visualization-page, .delivery-page, .profile-page {
+.admin-dashboard-page, .find-user-page, .user-list-page, .admin-list-page, .visualization-page, .delivery-page, .profile-page, .update-page {
     min-height: 100vh;
-    max-height: 100vh;
     min-width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
@@ -265,7 +268,7 @@
     color: white;
 }
 
-.user-list-body, .admin-list-body, .profile-body {
+.user-list-body, .admin-list-body, .profile-body, .update-body {
     min-width: 100vw;
     max-width: 100vw;
     min-height: calc(100vh - 60px);
@@ -700,13 +703,81 @@
     font-size: 3rem;
 }
 
-.profile-head {
+.profile-head, .update-head {
     font-size: 4rem;
     margin-bottom: 30px;
     font-weight: 600;
     text-align: center;
 }
 
+.profile-change, .profile-update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.user-change-but {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #37474f;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    width: 200px;
+    height: 50px;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.update-field {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-left {
+    display: flex;
+    width: 20%;
+}
+
+.field-right {
+    display: flex;
+    width: 70%;
+}
+
+.field-news, .field-mags {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.news-option, .mags-option {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-update-but {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #37474f;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    width: 260px;
+    height: 50px;
+}
 
 
 

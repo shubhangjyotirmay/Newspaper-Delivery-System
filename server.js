@@ -120,6 +120,14 @@ app.get("/profile", (req, res) => {
     }
 })
 
+app.get("/update", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("update");
+    } else {
+        res.redirect("/");
+    }
+})
+
 app.get("/logout", (req, res) => {
     req.logout();
     req.session = null;  
@@ -178,6 +186,27 @@ app.get("/api/findOnlyAdmins", (req, res) => {
             sendList.push(obj);
         }
         res.send(sendList);
+    })
+})
+
+app.patch("/api/user/:email", (req, res) => {
+    const updatedUser = req.body;
+    User.findOneAndUpdate({email: req.params.email}, {$set: updatedUser}, {new: true}, (err, doc) => {
+        if (err) {
+            console.log(err);
+        }
+        let userInfo = {
+            id: doc._id,
+            name: doc.name,
+            email: doc.email,
+            address: doc.address,
+            contactNo: doc.contactNo,
+            newspapers: doc.newspapers,
+            magazines: doc.magazines,
+            onlineSub: doc.onlineSubscription,
+            dues: doc.billDues
+        }
+        res.send(userInfo);
     })
 })
 

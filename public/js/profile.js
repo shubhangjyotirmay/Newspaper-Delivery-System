@@ -79,3 +79,29 @@ function fillRightBot(searchRes) {
         magsDiv.appendChild(div);
     }
 }
+
+// document.querySelector('.user-change-but').addEventListener('click', function(e) {
+//     let a = "Shubh Jyotir";
+//     let b = 5;
+//     let d = 2233;
+//     fetch('/api/user/shubh@gmail.com', {
+//         method: 'PATCH',
+//         headers: {
+//             Accept: "application/json",
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//             name: a,
+//             age: b,
+//             count: d
+//         })
+//     }).then((res) => {
+//         return res.json();
+//     }).then((data) => {
+//         console.log(data);
+//     })  
+// })
+
+document.querySelector('.user-logout-but').addEventListener('click', function() {
+    localStorage.removeItem('userNewzly');
+});
