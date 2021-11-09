@@ -155,9 +155,10 @@ body {
 .admin-dashboard-body {
     width: 100vw;
     height: calc(100vh - 60px);
-    padding: 200px 80px 0 80px;
+    padding: 0 80px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .admin-dashboard-info {
@@ -174,6 +175,11 @@ body {
 .admin-dashboard-text {
     font-size: 2rem;
     font-weight: 400;
+}
+
+.admin-photo {
+    height: 350px;
+    width: 700px;
 }
 
 .find-user-body {
