@@ -80,7 +80,7 @@ function showCard(e) {
     let userId = userCardId.innerText || userCardId.textContent;
     let userName = userCardName.innerText || userCardName.textContent;
 
-    M.toast({html: `Fetching ${userName}'s details!`, displayLength: 3000});
+    M.toast({html: `Fetching ${userName}'s details!`, displayLength: 2000});
 
     fetch(`/api/getUser/${userId}`).then((res) => {
         return res.json();
@@ -88,10 +88,10 @@ function showCard(e) {
         displayProfile(data);
         document.querySelector('.user-list-body').classList.add('hidden');
         document.querySelector('.profile-body').classList.remove('hidden');
-        M.toast({html: `${userName}'s details fetched successfully!'`, displayLength: 3000});
+        M.toast({html: `${userName}'s details fetched successfully!'`, displayLength: 2000});
         setTimeout(() => {
-            M.toast({html: `Press Go Back to check other users details`, displayLength: 3000});
-        }, 2500);
+            M.toast({html: `Press Go Back to check other users details`, displayLength: 2000});
+        }, 1500);
     })
 }
 
