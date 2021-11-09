@@ -109,7 +109,11 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: chocolate;
+}
+
+.news-icon {
+    height: 40px;
+    width: 40px;
 }
 
 .navbar-find-link, .navbar-list-link, .navbar-admin-link, .navbar-tree-link, .navbar-delivery-link {
