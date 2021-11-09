@@ -210,6 +210,23 @@ app.patch("/api/user/:email", (req, res) => {
     })
 })
 
+app.get("/api/getUser/:id", (req, res) => {
+    User.findOne({_id: req.params.id}).then((user) => {
+        let userInfo = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            address: user.address,
+            contactNo: user.contactNo,
+            newspapers: user.newspapers,
+            magazines: user.magazines,
+            onlineSub: user.onlineSubscription,
+            dues: user.billDues
+        }
+        res.send(userInfo);
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}!`);
 })

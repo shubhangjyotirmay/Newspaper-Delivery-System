@@ -717,7 +717,7 @@ body {
     margin-bottom: 50px;
 }
 
-.user-change-but {
+.user-change-but, .user-back-but {
     display: flex;
     justify-content: center;
     align-items: center;
